@@ -48,7 +48,7 @@ ini_set('display_errors', '1');
 
 //Creating new database
 	$sql="CREATE database $dbname";
-	if (mysqli_query($conn, $sql))
+	if (mysqli_query($con, $sql))
 		{echo "1. Creating database";echo "</br></br>";}
 	else 
 		{echo "1. Error creating database: " . mysqli_error($con);echo "</br></br>";}
@@ -65,10 +65,10 @@ $sql="CREATE TABLE $dbname.users (
   `lang` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idusers`)
 )";
-	if (mysqli_query($sql))
+	if (mysqli_query($con, $sql))
 		{echo "2.Created new table";echo "</br></br>";}
 	else 
-		{echo "2.Error in creating table: " . mysql_error();echo "</br></br>";}
+		{echo "2.Error in creating table: " . mysqli_error($con);echo "</br></br>";}
 
 
 //3
@@ -76,38 +76,38 @@ $sql="INSERT INTO $dbname.users
 		(`idusers`, `name`, `email`, `password`, `ua`, `ref`, `host`, `lang`)
      VALUES
      (0, 'admin', 'admin@getmantra.com', 'admin', 'Brick_Browser', '$server$scriptpath/content-13/index.php', '127.0.0.1', 'en')";
-	if (mysqli_query($sql))
+	if (mysqli_query($con, $sql))
 		{echo "3. Added admin user details"; echo "</br></br>";}
 	else 
-		{echo "3. Error adding admin user details: " . mysql_error();echo "</br></br>";}
+		{echo "3. Error adding admin user details: " . mysqli_error($con);echo "</br></br>";}
 //4
 $sql="INSERT INTO $dbname.users
 		(`idusers`, `name`, `email`, `password`, `ua`, `ref`, `host`, `lang`)
      VALUES
      (1, 'tom', 'tom@getmantra.com', 'tom', 'Block_Browser', '', '8.8.8.8', 'en');";
-	if (mysqli_query($sql))
+	if (mysqli_query($con, $sql))
 		{echo "3. Added tom"; echo "</br></br>";}
 	else 
-		{echo "3. Error adding tom: " . mysql_error();echo "</br></br>";}
+		{echo "3. Error adding tom: " . mysqli_error($con);echo "</br></br>";}
 
 //5
 $sql="INSERT INTO $dbname.users
 		(`idusers`, `name`, `email`, `password`, `ua`, `ref`, `host`, `lang`)
      VALUES
      (2, 'ron', 'ron@getmantra.com', 'ron', 'Rain_Browser', '', '192.168.1.1', 'en')";
-	if (mysqli_query($sql))
+	if (mysqli_query($con, $sql))
 		{echo "3. Added ron"; echo "</br></br>";}
 	else 
-		{echo "3. Error adding ron: " . mysql_error();echo "</br></br>";}
+		{echo "3. Error adding ron: " . mysqli_error($con);echo "</br></br>";}
 //6
 $sql="INSERT INTO $dbname.users
 		(`idusers`, `name`, `email`, `password`, `ua`, `ref`, `host`, `lang`)
      VALUES
      (3, 'harry', 'harry@getmantra.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Mantra', '', '127.0.0.1', 'en');";
-	if (mysqli_query($sql))
+	if (mysqli_query($con, $sql))
 		{echo "3. Added harry"; echo "</br></br>";}
 	else 
-		{echo "3. Error adding harry: " . mysql_error();echo "</br></br>";}
+		{echo "3. Error adding harry: " . mysqli_error($con);echo "</br></br>";}
 		
 	header( 'Location: index.php' ) ;
 

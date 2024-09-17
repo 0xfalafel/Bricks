@@ -2,8 +2,8 @@
 	require_once(dirname(dirname(__FILE__)) . '/includes/MySQLHandler.php');
 	$uagent = $_SERVER['HTTP_USER_AGENT'];
 	$sql= "SELECT * FROM users WHERE ua='$uagent' ";
-	$result=mysql_query($sql);
-	$count=mysql_num_rows($result);
+	$result=mysqli_query($con, $sql);
+	$count=mysqli_num_rows($result);
 ?><!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -36,10 +36,10 @@
 			<fieldset>
 				<legend>Details</legend>
 				<?php 
-					if ($content = mysql_fetch_array($result)) {
+					if ($content = mysqli_fetch_array($result)) {
 						echo 'This browser is normally used by<br/><br/>User ID: '. $content['idusers'] . '<br/><br/>User name: '. $content['name'] . '<br/><br/>';
 					} else if (!$result) {
-						echo("Database query failed: " . mysql_error());
+						echo("Database query failed: " . mysqli_connect_error());
 					} else {		
 						echo 'Error! User does not exists<br/><br/>';
 					}

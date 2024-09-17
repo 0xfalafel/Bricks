@@ -3,7 +3,7 @@
 	$user=$_GET['user'];
 	if(isset($_GET['user'])) {
 		$sql = "SELECT * FROM users WHERE name='$user'";
-		$result=mysql_query($sql);
+		$result=mysqli_query($con, $sql);
 	} else {
 		header("Location: index.php?user=harry");
 		exit;
@@ -40,12 +40,12 @@
 			<fieldset>
 				<legend>Details</legend>
 					<?php 
-							if ($content = mysql_fetch_array($result)) {
+							if ($content = mysqli_fetch_array($result)) {
 								echo '<br/>User ID: <b>'. $content['idusers'].'</b><br/><br/>';
 								echo 'User name: <b>'. $content['name'].'</b><br/><br/>';
 								echo 'E-mail: <b>'. $content['email'].'</b><br/><br/>';
 							} else if (!$result) {
-								echo("Database query failed: " . mysql_error());
+								echo("Database query failed: " . mysqli_error($con));
 								} else {		
 									echo 'Error! User does not exists';
 							}

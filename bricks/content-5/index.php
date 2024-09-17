@@ -1,11 +1,11 @@
 <?php
 	require_once(dirname(dirname(__FILE__)) . '/includes/MySQLHandler.php');
 	if(isset($_POST['submit'])) {
-		$username=mysql_real_escape_string($_POST['username']);
-		$pwd=mysql_real_escape_string($_POST['passwd']);
+		$username=mysqli_real_escape_string($con, $_POST['username']);
+		$pwd=mysqli_real_escape_string($con, $_POST['passwd']);
 		$sql1="SELECT * FROM users WHERE name='$username' and password='$pwd'";
-		$result1=mysql_query($sql1);
-		$count1=mysql_num_rows($result1);
+		$result1=mysqli_query($con, $sql1);
+		$count1=mysqli_num_rows($result1);
 		session_start();
 		if($count1>0)
 		{
@@ -46,17 +46,17 @@
 					{ 
 						$cookie=$_COOKIE['User'];
 						$sql="SELECT * FROM users WHERE name='$cookie' ";
-						$result=mysql_query($sql);
-						$count=mysql_num_rows($result);
-						if ($content = mysql_fetch_array($result)) {
+						$result=mysqli_query($con, $sql);
+						$count=mysqli_num_rows($result);
+						if ($content = mysqli_fetch_array($result)) {
 								echo '<fieldset><legend>Details</legend>';
 								echo '<br/>User ID: <b>'. $content['idusers'].'</b><br/><br/>';
 								echo 'User name: <b>'. $content['name'].'</b><br/><br/>';
 								echo 'E-mail: <b>'. $content['email'].'</b><br/><br/></fieldset>';
-								echo (mysql_error());
+								echo (mysqli_error($con));
 								echo '<a  class="small button" href="logout.php">Logout</a>';
 							} else if (!$result) {
-								echo("Database query failed: " . mysql_error());
+								echo("Database query failed: " . mysqli_error($con));
 								} else {		
 									echo '<br/>User ID: <b></b><br/><br/>';
 								echo 'User name: <b></b><br/><br/>';

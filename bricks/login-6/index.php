@@ -8,8 +8,8 @@
 	$username=$_POST['username'];
 	$pwd=$_POST['passwd'];
 	$sql="SELECT * FROM users WHERE name='$username' and password='$pwd'";
-	$result=mysql_query($sql);
-	$count=mysql_num_rows($result);
+	$result=mysqli_query($con, $sql);
+	$count=mysqli_num_rows($result);
 	if($count>0){
 		$_SESSION['valid'] = "1";
 	} 	} else {

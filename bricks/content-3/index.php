@@ -36,14 +36,14 @@
 		
 	$username=$_POST['username'];
 	$sql="SELECT * FROM users WHERE name='$username'";
-	$result=mysql_query($sql);
-	$count=mysql_num_rows($result);
-  if ($content = mysql_fetch_array($result)) {
+	$result=mysqli_query($con, $sql);
+	$count=mysqli_num_rows($result);
+  if ($content = mysqli_fetch_array($result)) {
 			echo '<br/>User ID: <b>'. $content['idusers'].'</b><br/><br/>';
 			echo 'User name: <b>'. $content['name'].'</b><br/><br/>';
 			echo 'E-mail: <b>'. $content['email'].'</b><br/><br/>';
 		} else if (!$result) {
-			echo("Database query failed: " . mysql_error());
+			echo("Database query failed: " . mysqli_connect_error());
 		} else {
 		
 			echo 'Error! User does not exists';
