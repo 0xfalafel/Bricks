@@ -50,7 +50,7 @@
 						$count=mysqli_num_rows($result);
 						if ($content = mysqli_fetch_array($result)) {
 								echo '<fieldset><legend>Details</legend>';
-								echo '<br/>User ID: <b>'. $content['idusers'].'</b><br/><br/>';
+								echo '<br/>User ID: <b>'. $content['id'].'</b><br/><br/>';
 								echo 'User name: <b>'. $content['name'].'</b><br/><br/>';
 								echo 'E-mail: <b>'. $content['email'].'</b><br/><br/></fieldset>';
 								echo (mysqli_error($con));

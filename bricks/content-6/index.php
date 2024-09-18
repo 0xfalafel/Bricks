@@ -2,7 +2,7 @@
 	require_once(dirname(dirname(__FILE__)) . '/includes/MySQLHandler.php');
 	if(isset($_GET['id'])) {
 		$id=base64_decode($_GET['id'],true);
-		$sql = "SELECT * FROM users WHERE idusers=$id LIMIT 1";
+		$sql = "SELECT * FROM users WHERE id=$id LIMIT 1";
 		$result=mysqli_query($con, $sql);
 	} else {
 		header("Location: index.php?id=Mw==");
@@ -38,7 +38,7 @@
 			<legend>Details</legend>
 				<?php 
 					if ($content = mysqli_fetch_array($result)) {
-						echo '<br/>User ID: <b>'. $content['idusers'].'</b><br/><br/>';
+						echo '<br/>User ID: <b>'. $content['id'].'</b><br/><br/>';
 						echo 'User name: <b>'. $content['name'].'</b><br/><br/>';
 						echo 'E-mail: <b>'. $content['email'].'</b><br/><br/>';
 					} else if (!$result) {
