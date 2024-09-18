@@ -1,4 +1,5 @@
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+ALTER USER 'root'@'localhost' IDENTIFIED with mysql_native_password;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root'; 
 
 CREATE DATABASE bricks;
 
