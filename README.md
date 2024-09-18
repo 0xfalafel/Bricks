@@ -1,5 +1,16 @@
 # BRICKS
 
+## TLDR
+
+You can run Bricks in a docker container with:
+
+```bash
+sudo docker run -d --name bricks -p 7000:80 0xfalafel/bricks
+```
+
+
+## Introduction
+
 Bricks is a **deliberately vulnerable web application** to learn common vulnerabilites.
 
 It features the following exercices:
