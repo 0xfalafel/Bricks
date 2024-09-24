@@ -1,4 +1,6 @@
 # BRICKS
+This repo is an __updated__ version of Bricks, that run on PHP 8.
+The __Docker__ image provided runs on __Ubuntu 22.04__.
 
 ## TLDR
 
