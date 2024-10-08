@@ -36,3 +36,14 @@ You can build the container with the following command:
 ```bash
 sudo docker build -t falafel/bricks .
 ```
+
+### Vagrant
+
+If you prefer to work with Virtual Machines, you can create one using `vagrant`.
+
+First [install Vagrant](https://developer.hashicorp.com/vagrant/downloads), i.e. `sudo apt install vagrant`
+
+Then run the following command from the folder
+```bash
+vagrant up
+```

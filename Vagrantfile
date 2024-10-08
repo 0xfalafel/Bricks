@@ -18,6 +18,9 @@ Vagrant.configure("2") do |config|
   # Add a host-only network interface
   config.vm.network "private_network", type: "dhcp"
 
+
+  ## Apache & PHP
+
   # Environment variable to disable warning from apt
   apt_env = {"DEBIAN_FRONTEND" => "noninteractive", "TZ" => "Europe/Paris"}
 
@@ -28,5 +31,29 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: "apt-get install -y apache2", env: apt_env
   config.vm.provision "shell", inline: "apt-get install -y php libapache2-mod-php", env: apt_env
 
-  # Apache2 configuration
+  ## Installing files, the folder containing the Vagrantfile is mounted on `/vagrant`
+  # copy Apache2 configuration
+  config.vm.provision "shell", inline: "cp /vagrant/config/apache2.conf /etc/apache2/apache2.conf -v"
+  config.vm.provision "shell", inline: "cp /vagrant/config/000-default.conf /etc/apache2/sites-available/000-default.conf -v"
+
+  # copy Bricks files
+  config.vm.provision "shell", inline: "cp -r /vagrant/bricks/ /var/www/bricks/ -v"
+
+
+  ## MySQL database
+
+  # Install MySQL
+  config.vm.provision "shell", inline: "apt-get install -y mysql-server php-mysql", env: apt_env
+
+  # Enable the extension in the PHP configuration
+  config.vm.provision "shell", inline: "echo 'extension=mysqli' >> /etc/php/8.1/cli/php.ini"
+  
+  # Run the SQL service
+  config.vm.provision "shell", inline: "systemctl start mysql; systemctl status mysql"
+  
+  # Populate the SQL database
+  config.vm.provision "shell", inline: "mysql < /vagrant/config/setup.sql"
+  
+  # Start Apache2
+  config.vm.provision "shell", inline: "systemctl start apache2; systemctl status apache2"
 end
