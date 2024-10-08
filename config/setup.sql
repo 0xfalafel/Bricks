@@ -13,15 +13,15 @@ CREATE TABLE bricks.users (
 );
 
 INSERT INTO bricks.users (`id`, `name`, `email`, `password`, `ua`)
-VALUES (0, 'admin', 'admin@getmantra.com', 'admin', 'Brick_Browser');
+VALUES (0, 'admin', 'admin@getmantra.com', 'S3cr3t_p4ssw0rd!', 'Brick_Browser');
 
 INSERT INTO bricks.users (`id`, `name`, `email`, `password`, `ua`)
-VALUES (1, 'tom', 'tom@getmantra.com', 'tom', 'Block_Browser');
+VALUES (1, 'tom', 'tom@getmantra.com', 'Strawberry<3', 'Block_Browser');
 
 INSERT INTO bricks.users (`id`, `name`, `email`, `password`, `ua`)
-VALUES  (2, 'ron', 'ron@getmantra.com', 'ron', 'Rain_Browser');
+VALUES  (2, 'ron', 'ron@getmantra.com', 'D4rk_v4d0+0r!', 'Rain_Browser');
 
 INSERT INTO bricks.users (`id`, `name`, `email`, `password`, `ua`)
-VALUES  (3, 'harry', 'harry@getmantra.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Mantra');
+VALUES  (3, 'harry', 'harry@getmantra.com', 'bd35bb2a012ddadfccf23157d8e6d530', 'Mantra');
 
 
