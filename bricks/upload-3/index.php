@@ -28,17 +28,19 @@
 			<?php
 				$valid_file_extensions = array(".jpg", ".jpeg", ".png");
 				if(isset($_POST['upload'])) {
-					$filename =  $_FILES['userfile']['name'];
-					$img_type = $_FILES['userfile']['type'];
+          $filename =  $_FILES['userfile']['name'];
 					$destination = 'uploads/' . $_FILES['userfile']['name'];
-					if (($img_type == 'image/png') || ($img_type == 'image/jpeg')  ) {
+          
+          $file_extension = pathinfo($filename, PATHINFO_EXTENSION); // get the extension, i.e. `.png`
+          
+					if ($file_extension != 'php') { // check that the file doesn't end with `.php`
 						if (move_uploaded_file($_FILES['userfile']['tmp_name'],$destination)) {
 							echo "<div class=\"alert-box success\">Upload succesful: <a href='$destination'>here</a><a href=\"\" class=\"close\">&times;</a></div>";
 						}
 					} else {
-						echo "<div class=\"alert-box alert\">Upload failed.<a href=\"\" class=\"close\">&times;</a></div>";
-							}
-							}
+						echo "<div class=\"alert-box alert\">Upload failed: no PHP!.<a href=\"\" class=\"close\">&times;</a></div>";
+					}
+        }
 			?>
 			<form enctype="multipart/form-data" action="index.php" method="POST">
 				<fieldset>
