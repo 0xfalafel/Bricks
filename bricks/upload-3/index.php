@@ -38,7 +38,7 @@
 							echo "<div class=\"alert-box success\">Upload succesful: <a href='$destination'>here</a><a href=\"\" class=\"close\">&times;</a></div>";
 						}
 					} else {
-						echo "<div class=\"alert-box alert\">Upload failed: no PHP!.<a href=\"\" class=\"close\">&times;</a></div>";
+						echo "<div class=\"alert-box alert\">Upload failed: no PHP!<a href=\"\" class=\"close\">&times;</a></div>";
 					}
         }
 			?>
