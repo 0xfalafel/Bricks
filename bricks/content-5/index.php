@@ -9,7 +9,7 @@
 		session_start();
 		if($count1>0)
 		{
-			setcookie(User, $username);
+			setcookie('User', $username);
 			header("location: index.php");
 		}
 	 } 
