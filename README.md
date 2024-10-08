@@ -6,12 +6,13 @@ The __Docker__ image provided runs on __Ubuntu 22.04__.
 
 ## TLDR
 
-You can run Bricks in a docker container with:
+You can __run__ Bricks in a __docker__ container with:
 
 ```bash
 sudo docker run -d --name bricks -p 7000:80 0xfalafel/bricks
 ```
 
+A __VirtualBox VM__ is also available: [https://github.com/0xfalafel/Bricks/releases/tag/3.0](https://github.com/0xfalafel/Bricks/releases/tag/3.0).
 
 ## Introduction
 
