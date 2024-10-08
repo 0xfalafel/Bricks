@@ -41,7 +41,7 @@ sudo docker build -t falafel/bricks .
 
 If you prefer to work with Virtual Machines, you can create one using `vagrant`.
 
-First [install Vagrant](https://developer.hashicorp.com/vagrant/downloads), i.e. `sudo apt install vagrant`
+First [install Vagrant](https://developer.hashicorp.com/vagrant/downloads), i.e. `sudo apt install vagrant`.
 
 Then run the following command from the folder
 ```bash
