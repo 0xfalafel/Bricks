@@ -27,3 +27,12 @@ The interest of Bricks over some other training material is that:
 1. It look nice
 2. The **SQL query executed is reflected** in the webpage. Which make it **easier** to **understand SQL injections**.
 
+## Build
+
+### Docker
+
+You can build the container with the following command:
+
+```bash
+sudo docker build -t falafel/bricks .
+```
