@@ -23,6 +23,7 @@ RUN chmod -R 777 /var/www/bricks/
 # Install MySQL
 RUN apt-get install -y mysql-server php-mysql
 
+# activate the mysqli extension in the php config
 RUN echo 'extension=mysqli' >> /etc/php/8.1/cli/php.ini
 
 # Setup the SQL database
