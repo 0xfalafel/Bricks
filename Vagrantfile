@@ -61,6 +61,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: "systemctl reload apache2" # apply the new config
   config.vm.provision "shell", inline: "systemctl start apache2; systemctl status apache2"
 
+  # Copy the /etc/issue file
+  config.vm.provision "shell", inline: "cp /vagrant/config/issue /etc/issue -v"
+
   # Indicate the IP address
   config.vm.provision "shell", inline: "echo \"Bricks' IP is : $(ip addr show | grep 'inet ' | tail -n 1 | awk '{print $2}' | cut -d '/' -f 1)\""
 end
