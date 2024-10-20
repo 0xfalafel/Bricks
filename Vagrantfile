@@ -24,6 +24,9 @@ Vagrant.configure("2") do |config|
   # Environment variable to disable warning from apt
   apt_env = {"DEBIAN_FRONTEND" => "noninteractive", "TZ" => "Europe/Paris"}
 
+  # apt update or our `apt install` could fail
+  config.vm.provision "shell", inline: "apt-get update", env: apt_env
+
   # Install some usefull tools for debugging
   config.vm.provision "shell", inline: "apt-get install -y net-tools vim", env: apt_env
 
