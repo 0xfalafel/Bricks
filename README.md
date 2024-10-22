@@ -14,7 +14,7 @@ You can __run__ Bricks in a __docker__ container with:
 sudo docker run -d --name bricks -p 7000:80 0xfalafel/bricks
 ```
 
-A __VirtualBox VM__ is also available: [https://github.com/0xfalafel/Bricks/releases/tag/3.1](https://github.com/0xfalafel/Bricks/releases/tag/3.1).
+A __VirtualBox VM__ is also available: [https://github.com/0xfalafel/Bricks/releases/tag/3.1](https://github.com/0xfalafel/Bricks/releases/tag/3.3).
 
 You can login with the credentials: `vagrant:vagrant`.
 
