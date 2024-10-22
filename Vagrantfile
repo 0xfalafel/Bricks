@@ -6,6 +6,16 @@ Vagrant.configure("2") do |config|
   # Base box image
   config.vm.box = "ubuntu/jammy64"
 
+  # Configure ssh password authentication
+  #config.ssh.username = 'vagrant'
+  #config.ssh.password = 'vagrant'
+  #config.ssh.insert_key = false
+
+  config.vm.provision "shell", inline: <<-SHELL
+     sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config.d/60-cloudimg-settings.conf    
+     systemctl restart sshd.service
+  SHELL
+
   # Configure a name for the VM
   config.vm.hostname = "bricks"
   config.vm.define "bricks"
@@ -42,6 +52,12 @@ Vagrant.configure("2") do |config|
   # copy Bricks files
   config.vm.provision "shell", inline: "cp -r /vagrant/bricks/ /var/www/bricks/ -v"
 
+  # Configure the propers rights for the uploads directories
+  config.vm.provision "shell", inline: "chown -R www-data:www-data /var/www/bricks/upload-1/uploads -v"
+  config.vm.provision "shell", inline: "chown -R www-data:www-data /var/www/bricks/upload-2/uploads -v"
+  config.vm.provision "shell", inline: "chown -R www-data:www-data /var/www/bricks/upload-3/uploads -v"
+  
+
 
   ## MySQL database
 
@@ -60,6 +76,8 @@ Vagrant.configure("2") do |config|
   # Start Apache2
   config.vm.provision "shell", inline: "systemctl reload apache2" # apply the new config
   config.vm.provision "shell", inline: "systemctl start apache2; systemctl status apache2"
+
+
 
   # Copy the /etc/issue file
   config.vm.provision "shell", inline: "cp /vagrant/config/issue /etc/issue -v"
