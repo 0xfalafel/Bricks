@@ -7,6 +7,7 @@ RUN apt-get install -y apache2
 
 # Install PHP
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/Paris"
+RUN apt-get update
 RUN apt-get install -y php libapache2-mod-php
 
 # Always usefull for debug
