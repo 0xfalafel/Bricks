@@ -11,7 +11,7 @@
 		{
 			setcookie('User', $username);
 			header("location: index.php");
-		}
+    }
 	 } 
 ?><!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -62,8 +62,17 @@
 								echo 'User name: <b></b><br/><br/>';
 								echo 'E-mail: <b></b><br/><br/>';
 							}
-					} else {
-						echo '';
+          } else {
+            
+            echo '<p>Use the <b>credentials</b> obtained with the <b>other exercices</b>.</p>';
+
+            if (isset($count1)) {
+              if ($count1 == 0) {
+                echo "<p><b>Invalid credentials</b></p>";
+              }
+            }
+            
+            echo '';
 						echo '<form method="POST" action="index.php" enctype="application/x-www-form-urlencoded"><fieldset><legend>Login</legend>
 					<p>Username: <input type="text" name="username" id="username" size="25" required/></p>
 					<p>Password: <input type="password" name="passwd" id="passwd" size="25" required/></p>
