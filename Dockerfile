@@ -13,6 +13,9 @@ RUN apt-get install -y php libapache2-mod-php
 # Always usefull for debug
 RUN apt-get install -y net-tools vim
 
+# Install MySQL
+RUN apt-get install -y mysql-server php-mysql
+
 # Apache2 configuration
 COPY config/apache2.conf /etc/apache2/apache2.conf
 COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
@@ -20,9 +23,6 @@ COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
 # Application data
 COPY ./bricks/ /var/www/bricks/
 RUN chmod -R 777 /var/www/bricks/
-
-# Install MySQL
-RUN apt-get install -y mysql-server php-mysql
 
 # activate the mysqli extension in the php config
 RUN echo 'extension=mysqli' >> /etc/php/8.1/cli/php.ini
