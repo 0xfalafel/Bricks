@@ -37,7 +37,7 @@
 				<legend>Details</legend>
 				<?php 
 					if ($content = mysqli_fetch_array($result)) {
-						echo 'This browser is normally used by<br/><br/>User ID: '. $content['idusers'] . '<br/><br/>User name: '. $content['name'] . '<br/><br/>';
+						echo 'This browser is normally used by<br/><br/>User ID: '. $content['id'] . '<br/><br/>User name: '. $content['name'] . '<br/><br/>';
 					} else if (!$result) {
 						echo("Database query failed: " . mysqli_connect_error());
 					} else {		
